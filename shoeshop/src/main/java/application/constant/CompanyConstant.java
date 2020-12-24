@@ -1,5 +1,5 @@
 package application.constant;
 
 public class CompanyConstant {
-    public static final String NAME = "NIKE";
+    public static final String NAME = "SHOESHOP";
 }

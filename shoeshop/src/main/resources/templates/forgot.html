@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/forgot.css}"/>
+    <title>Login</title>
+
+</head>
+<body>
+
+<div class="row" style="">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <form th:action="@{/register-user}" th:object="${user}" method="post">
+            <fieldset>
+                <div class="login-wrap">
+                    <div class="login-html">
+                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label style="color:black" for="tab-1" class="tab">Enter your email
+                    </label>
+                        <div class="login-form">
+                            <div class="sign-in-htm">
+
+                                <div class="group">
+                                    <label style="color:black" class="label form-control input-lg ">Your email</label>
+                                    <input id="email"  name="email" type="email" class="input form-control input-lg"
+                                           placeholder="Your email" th:field="*{email}"  required="true" autofocus="true" >
+                                </div>
+
+                                <div class="group">
+                                    <button class="btn btn-primary button" type="submit" style="font-size: 16px"><b>SUBMIT</b></button>
+                                </div>
+                                <div class="group">
+                                    <button  class="btn btn-primary button" type="submit" style="font-size: 16px"><a href="/login">BACK</a></button>
+                                </div>
+                                <div class="hr"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://ahachat.com/customer-chats/customer_chat_6otzdgGJso5de650baaa7d3.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.9.0/sweetalert2.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+<script th:src="@{/js/home.js}"></script>
+</body>
+</html>

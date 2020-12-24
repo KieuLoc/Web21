@@ -1,16 +1,20 @@
 package application.controller.web;
 
 
-import application.data.model.Category;
-import application.data.model.Product;
-import application.data.model.ProductImage;
+import application.data.model.*;
+import application.data.repository.OrderRepository;
 import application.data.service.CategoryService;
+import application.data.service.OrderService;
 import application.data.service.ProductService;
+import application.data.service.UserService;
 import application.model.viewmodel.admin.*;
 import application.model.viewmodel.common.CategoryVM;
 import application.model.viewmodel.common.ChartDataVM;
 import application.model.viewmodel.common.ProductImageVM;
 import application.model.viewmodel.common.ProductVM;
+//import application.model.viewmodel.common.UserVM;
+import application.model.viewmodel.order.OrderVM;
+import application.model.viewmodel.user.UserVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -33,7 +37,14 @@ public class AdminController extends BaseController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private UserService userService;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private OrderService orderService;
     @GetMapping("")
     public String admin(Model model) {
 
@@ -44,6 +55,51 @@ public class AdminController extends BaseController {
         return "/admin/home";
     }
 
+    @GetMapping("/user")
+    public String user(Model model,
+                           @Valid @ModelAttribute("username") UserVM userName,
+                           @RequestParam(name = "page", required = false, defaultValue = "0") Integer page,
+                           @RequestParam(name = "size", required = false, defaultValue = "8") Integer size
+    ) {
+        AdminProductVM vm = new AdminProductVM();
+//        List<User> userList = userService.getListAllUsers();
+////        List<application.model.viewmodel.common.UserVM> userVMList = new ArrayList<>();
+//        List<UserVM> userVMList = new ArrayList<>();
+//        Pageable pageable = new PageRequest(page, size);
+//
+//        Page<User> userPage = null;
+//
+//        for (User user : userList) {
+//            UserVM userVM = new UserVM();
+//            userVM.setId(user.getId());
+//            userVM.setName(user.getName());
+//            userVM.add(userVM);
+//        }
+//        if(userName.getName() != null && !userName.getName().isEmpty()){
+//            userPage = userService.getListAllUsers(pageable, null);
+//            vm.setKeyWord("Find with key: " + userName.getName());
+//        } else {
+//            userPage = userService.getListAllUsers(pageable, null);
+//        }
+//        for(User user: userPage.getContent()){
+//            UserVM userVM = new UserVM();
+//            userVM.setId(user.getId());
+//            userVM.setName(user.getName());
+//            userVM.setPhoneNumber(user.getPhoneNumber());
+//            userVM.setAddress(user.getAddress());
+//            userVM.setEmail(user.getEmail());
+//            userVMList.add(userVM);
+//        }
+//        if (userVMList.size() == 0) {
+//            vm.setKeyWord("Not found any user");
+//        }
+//
+        vm.setLayoutHeaderAdminVM(this.getLayoutHeaderAdminVM());
+//        vm.setUserVMList(userVMList);
+        model.addAttribute("vm", vm);
+//        model.addAttribute("page", userPage);
+        return "/admin/user";
+    }
 
     @GetMapping("/product")
     public String product(Model model,
@@ -153,10 +209,10 @@ public class AdminController extends BaseController {
             vm.setKeyWord("Not found any category");
         }
 
-
+//
         model.addAttribute("vm", vm);
         model.addAttribute("page", categoryPage);
-
+//
         return "/admin/category";
     }
 
@@ -208,5 +264,56 @@ public class AdminController extends BaseController {
 
         return "/admin/product-image";
     }
+    @GetMapping("/order")
+    public String Order(Model model,
+                        @Valid @ModelAttribute("phonenumber") OrderVM phoneNumber,
+                        @RequestParam(name="page" ,required = false,defaultValue = "0") Integer page,
+                        @RequestParam(name="size",required = false,defaultValue = "10") Integer size){
 
+        AdminOrderVM vm=new AdminOrderVM();
+
+        /*
+        set list category
+        * */
+//        List<CategoryVM> categoryVMList=categoryService.getListCategories();
+
+        Pageable pageable=new PageRequest(page,size);
+
+//        Page<OrderVM> orderPage=null;
+        Page<Order> orderPage=null;
+
+        if(phoneNumber.getPhoneNumber() != null && !phoneNumber.getPhoneNumber().isEmpty()){
+            orderPage=orderRepository.getListOrdersByPhoneNumberContaining(pageable,phoneNumber.getPhoneNumber());
+            vm.setKeyword("Find with key: " + phoneNumber.getPhoneNumber());
+        }else{
+            orderPage=orderRepository.getListOrdersByPhoneNumberContaining(pageable,null);
+        }
+
+        List<OrderVM> orderVMS=new ArrayList<>();
+
+        for(Order order:orderPage.getContent()){
+            OrderVM orderVM = new OrderVM();
+            orderVM.setId(order.getId());
+            orderVM.setCustomerName(order.getCustomerName());
+            orderVM.setCreatedDate(order.getCreatedDate());
+            orderVM.setEmail(order.getEmail());
+            orderVM.setPhoneNumber(order.getPhoneNumber());
+            orderVM.setStatus(order.getStatus());
+            orderVM.setPrice(Double.toString(order.getPrice()));
+            orderVM.setAddress(order.getAddress());
+
+            orderVMS.add(orderVM);
+        }
+
+        vm.setLayoutHeaderAdminVM(this.getLayoutHeaderAdminVM());
+        vm.setOrderVMS(orderVMS);
+        if (orderVMS.size() == 0) {
+            vm.setKeyword("Not found any order");
+        }
+
+        model.addAttribute("vm", vm);
+        model.addAttribute("page", orderPage);
+
+        return "/admin/order";
+    }
 }

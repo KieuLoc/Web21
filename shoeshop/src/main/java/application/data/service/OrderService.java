@@ -1,10 +1,13 @@
 package application.data.service;
 
+import application.data.model.Category;
 import application.data.model.Order;
 import application.data.repository.OrderRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -28,5 +31,7 @@ public class OrderService {
     public List<Order> findOrderByGuidOrUserName(String guid, String userName) {
         return orderRepository.findOrderByGuidOrUserName(guid,userName);
     }
-
+//    public Page<Order> getListOrderByGuidContaining (Pageable pageable, String orderName){
+//        return orderRepository.getListByGuidContaining(pageable,orderName);
+//    }
 }

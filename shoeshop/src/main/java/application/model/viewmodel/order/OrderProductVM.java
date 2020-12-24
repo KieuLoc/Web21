@@ -7,6 +7,7 @@ public class OrderProductVM {
     private int amount;
     private String price;
     private String name;
+    private String format;
 
     public int getProductId() {
         return productId;
@@ -46,5 +47,9 @@ public class OrderProductVM {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setProductPrice(String format) {
+        this.format = format;
     }
 }

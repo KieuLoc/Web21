@@ -56,8 +56,8 @@ public class HomeController extends BaseController {
          * set list bannerVM
          */
         List<BannerVM> listBanners = new ArrayList<>();
-        listBanners.add(new BannerVM("", "Text 1","https://i.imgur.com/EDGmGOK.png"));
-        listBanners.add(new BannerVM("", "Text 2","https://i.imgur.com/1vO9SRK.jpg"));
+        listBanners.add(new BannerVM("", "Text 1","https://forums.oscommerce.com/uploads/monthly_04_2016/post-336856-0-18918000-1459704022.jpg"));
+        listBanners.add(new BannerVM("", "Text 2","https://media.doisongvietnam.vn/u/rootimage/editor/2020/01/23/20/33/w825/e11579764812_3938.jpg"));
 
 
         /**

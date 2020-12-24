@@ -22,4 +22,7 @@ public class LayoutHeaderVM {
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
+
+    public void setLayoutHeaderVM(LayoutHeaderVM layoutHeaderVM) {
+    }
 }

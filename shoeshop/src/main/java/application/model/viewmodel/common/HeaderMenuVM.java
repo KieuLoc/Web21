@@ -27,4 +27,7 @@ public class HeaderMenuVM {
     public void setLink(String link) {
         this.link = link;
     }
+
+    public void setLayoutHeaderVM(LayoutHeaderVM layoutHeaderVM) {
+    }
 }

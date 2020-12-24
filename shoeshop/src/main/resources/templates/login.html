@@ -1,62 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>-->
+
 </head>
 <body>
 
 <div class="container">
 
-    <div class="row" style="margin-top:20px">
+    <div class="row" style="">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
             <form th:action="@{/login}" method="post">
                 <fieldset>
-                    <h1>Please Sign In</h1>
+                    <div class="login-wrap">
+                        <div class="login-html">
+                            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+                            <div class="login-form">
+                                <div class="sign-in-htm">
 
-                    <div th:if="${param.error}">
-                        <div class="alert alert-danger">
-                            Invalid username and password.
-                        </div>
-                    </div>
-                    <div th:if="${param.logout}">
-                        <div class="alert alert-info">
-                            You have been logged out.
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" name="username" id="username" class="form-control input-lg"
-                               placeholder="UserName" required="true" autofocus="true"/>
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="password" id="password" class="form-control input-lg"
-                               placeholder="Password" required="true"/>
-                    </div>
-                    <!--<div class="form-group">-->
-                        <!--<input type="checkbox" name="remember-me" id="remember-me" class="form-control input-lg"-->
-                               <!--placeholder="Remember-me" required="false"/>-->
-                    <!--</div>-->
-
-                    <input type="checkbox" name="remember-me" id="remember-me" style="margin-bottom: 20px">Remember me<br>
-
-
-                    <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <button class="btn btn-primary" type="submit">Sign In</button>
-
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                            <a class="btn btn-success" th:href="@{'/register'}" role="button">Register</a>
+                                    <div class="group">
+                                        <label style="color:black" class="label form-control input-lg " style="color:black">Username</label>
+                                        <input style="color:black" id="username"  name="username" type="text" class="input form-control input-lg"
+                                               placeholder="UserName" required="true" autofocus="true">
+                                    </div>
+                                    <div class="group">
+                                        <label  class="label" style="color:black">Password</label>
+                                        <input id="password"  name="password"  type="password" class="input form-control input-lg"
+                                               data-type="password" placeholder="Password" required="true">
+                                    </div>
+                                    <div class="group">
+                                        <input id="check" type="checkbox" class="check" checked>
+                                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                                    </div>
+                                    <div class="group">
+                                        <button class="btn btn-primary button" type="submit" style="font-size: 16px; color: black">Sign In</button>
+                                    </div>
+                                    <div class="group">
+                                        <a class="btn btn-success button" th:href="@{'/register'}" role="button"style="text-align: center;font-size: 16px; background-color: #12cfd4 ">Register</a>
+                                    </div>
+                                    <div class="hr"></div>
+                                    <div class="foot-lnk">
+                                        <a th:href="@{'/forgot'}" style="color: orangered; font-size:24px">Forgot Password?</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </fieldset>
             </form>
         </div>
     </div>
-
 </div>
-
 </body>
 </html>

@@ -1,37 +1,56 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/register.css}"/>
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>-->
+
 </head>
 <body>
-<div class="container">
 
-    <div class="row" style="margin-top:20px">
+<div class="container">
+    <div class="row" style="">
         <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
             <form th:action="@{/register-user}" th:object="${user}" method="post">
                 <fieldset>
-                    <h1>Register new user</h1>
-                    <div class="form-group">
-                        <label for="email">Username:</label>
-                        <input type="text" class="form-control" id="username" th:field="*{userName}" name="username" />
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email address:</label>
-                        <input type="email" class="form-control" id="email" th:field="*{email}" name="email" />
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" th:field="*{password}" name="password"/>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <div class="login-wrap">
+                        <div class="login-html">
+                            <input  id="tab-1" type="radio" name="tab" class="sign-in" checked><label style="color: black" for="tab-1" class="tab">Sign Up</label>
+                            <div class="login-form">
+                                <div class="sign-in-htm">
 
+                                    <div class="group">
+                                        <label style="color: black" class="label form-control input-lg ">Username</label>
+                                        <input style="color:black" id="username"  name="username" type="text" class="input form-control input-lg"
+                                               placeholder="UserName" th:field="*{userName}" required="true" autofocus="true" >
+                                    </div>
+                                    <div class="group">
+                                        <label style="color:black" style="color: black" class="label form-control input-lg ">Email Address</label>
+                                        <input style="color:black" id="email"  name="email" type="email" class="input form-control input-lg"
+                                               placeholder="Email" th:field="*{email}" required="true" autofocus="true" >
+                                    </div>
+                                    <div style="color:black" class="group">
+                                        <label style="color: black" class="label">Password</label>
+                                        <input style="color:black" id="password"  name="password"  type="password" class="input form-control input-lg"
+                                               data-type="password" th:field="*{password}" placeholder="Password" required="true">
+                                    </div>
+                                    <div class="group">
+                                        <button class="btn btn-primary button" type="submit" style="font-size: 16px"><b>SUBMIT</b></button>
+                                    </div>
+                                    <div class="group">
+                                        <button class="btn btn-primary button" type="submit" style="font-size: 16px"><a href="/login">Back</a></button>
+                                    </div>
+                                    <div class="hr"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </fieldset>
             </form>
         </div>
     </div>
-
 </div>
 </body>
 </html>

@@ -31,7 +31,8 @@ public class ProductImageApiController {
             "https://salt.tikicdn.com/cache/280x280/ts/product/50/b8/c5/ea2d975c22483854c70a48052e33b7f4.jpg",
             "https://salt.tikicdn.com/cache/280x280/ts/product/86/85/74/bd348eeeea93268b0cea8e3bb14cbaf9.jpg",
             "https://salt.tikicdn.com/cache/280x280/ts/product/f3/eb/69/8a7769830a82334068669457b20180b0.jpg",
-            "https://salt.tikicdn.com/cache/280x280/ts/product/fb/db/ce/c94548b56dd1e7a3cd13a9e98f4b6694.jpg"
+            "https://salt.tikicdn.com/cache/280x280/ts/product/fb/db/ce/c94548b56dd1e7a3cd13a9e98f4b6694.jpg",
+            "Nike_shoe.jpg"
     };
 
     @GetMapping("/fake")

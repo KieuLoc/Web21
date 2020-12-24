@@ -3,6 +3,7 @@ package application.model.viewmodel.admin;
 import application.model.viewmodel.common.CategoryVM;
 import application.model.viewmodel.common.LayoutHeaderAdminVM;
 import application.model.viewmodel.common.ProductVM;
+import application.model.viewmodel.user.UserVM;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class AdminProductVM {
     private List<CategoryVM> categoryVMList;
     private String keyWord;
     private LayoutHeaderAdminVM layoutHeaderAdminVM;
+    private List<UserVM> userVMList;
 
     public List<ProductVM> getProductVMList() {
         return productVMList;
@@ -43,5 +45,9 @@ public class AdminProductVM {
 
     public void setLayoutHeaderAdminVM(LayoutHeaderAdminVM layoutHeaderAdminVM) {
         this.layoutHeaderAdminVM = layoutHeaderAdminVM;
+    }
+
+    public void setUserVMList(List<UserVM> userVMList) {
+        this.userVMList = userVMList;
     }
 }

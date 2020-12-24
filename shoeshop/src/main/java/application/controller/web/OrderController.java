@@ -182,6 +182,8 @@ public class OrderController extends BaseController {
                 orderVM.setPrice(df.format(order.getPrice()));
                 orderVM.setCreatedDate(order.getCreatedDate());
 
+                orderVM.setStatus(order.getStatus());
+
                 orderVMS.add(orderVM);
             }
         }
@@ -211,6 +213,7 @@ public class OrderController extends BaseController {
         Order orderEntity = orderService.findOne(orderId);
 
         if(orderEntity != null) {
+            vm.setOrderStatus(orderEntity.getStatus());
             for(OrderProduct orderProduct : orderEntity.getListProductOrders()) {
                 OrderProductVM orderProductVM = new OrderProductVM();
 
@@ -220,6 +223,8 @@ public class OrderController extends BaseController {
                 orderProductVM.setName(orderProduct.getProduct().getName());
 
                 orderProductVM.setPrice(df.format(orderProduct.getPrice()));
+
+                orderProductVM.setProductPrice(df.format(orderProduct.getProduct().getPrice()));
 
                 totalPrice += orderProduct.getPrice();
 
@@ -232,10 +237,12 @@ public class OrderController extends BaseController {
         vm.setTotalPrice(df.format(totalPrice));
         vm.setTotalProduct(orderProductVMS.size());
 
+        vm.setCustomerName(orderEntity.getCustomerName());
+        vm.setCreatedDate(orderEntity.getCreatedDate());
+
         model.addAttribute("vm",vm);
 
         return "/order-detail";
     }
-
 
 }

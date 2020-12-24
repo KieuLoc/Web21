@@ -2,6 +2,7 @@ package application.controller.web;
 
 import application.data.model.User;
 import application.data.service.UserService;
+import application.model.viewmodel.home.HomeLandingVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +32,13 @@ public class DefaultController {
     @GetMapping(path="/register")
     public String register(Model model) {
         model.addAttribute("user", new User());
+        HomeLandingVM vm = new HomeLandingVM();
         return "/register";
+    }
+    @GetMapping(path="/forgot")
+    public String forgot(Model model) {
+        model.addAttribute("user", new User());
+        return "/forgot";
     }
 
 
@@ -40,5 +47,6 @@ public class DefaultController {
         userService.registerNewUser(user);
         return "redirect:/login";
     }
+
 
 }

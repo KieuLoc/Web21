@@ -28,11 +28,12 @@
                 <th colspan="1">Total price</th>
                 <th colspan="1">Created Date</th>
                 <th colspan="1">Detail</th>
-                <th colspan="2">Status</th>
+                <th colspan="1">Status</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="order,iter : ${vm.getOrderVMS()}">
+
                 <td colspan="1" th:text="${iter.index+1}" ></td>
                 <td colspan="2" th:text="${order.getCustomerName()}"></td>
                 <td colspan="2" th:text="${order.getEmail()}"></td>
@@ -43,9 +44,7 @@
 
                 <td colspan="1">
                     <a class="btn btn-primary" th:href="@{'/order/history/'+${order.getId()}}" role="button">Detail</a>
-                </td>
-
-                </td>
+                <td colspan="1" th:text="${order.getStatus()}"></td>
             </tr>
 
             </tbody>

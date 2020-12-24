@@ -2,6 +2,7 @@ package application.model.viewmodel.order;
 
 import application.model.viewmodel.common.LayoutHeaderVM;
 
+import java.util.Date;
 import java.util.List;
 
 public class OrderDetailVM {
@@ -10,6 +11,9 @@ public class OrderDetailVM {
     private List<OrderProductVM> orderProductVMS;
     private String totalPrice;
     private int totalProduct;
+    private String customerName;
+    private Date createdDate;
+    private String status;
 
     public LayoutHeaderVM getLayoutHeaderVM() {
         return layoutHeaderVM;
@@ -41,5 +45,17 @@ public class OrderDetailVM {
 
     public void setTotalProduct(int totalProduct) {
         this.totalProduct = totalProduct;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public void setOrderStatus(String status) {
+        this.status = status;
     }
 }

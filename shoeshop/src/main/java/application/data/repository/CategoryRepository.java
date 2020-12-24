@@ -24,4 +24,6 @@ public interface CategoryRepository extends JpaRepository<Category,Integer> {
             "INNER JOIN p.orderProductList op " +
             "GROUP BY c.id ")
     List<ChartDataVM> getListProductOrderedByCategory();
+
+
 }

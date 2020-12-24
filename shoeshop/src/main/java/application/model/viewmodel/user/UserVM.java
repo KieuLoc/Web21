@@ -1,5 +1,7 @@
 package application.model.viewmodel.user;
 
+import application.model.viewmodel.common.LayoutHeaderVM;
+
 public class UserVM {
     private int id;
     private String avatar;
@@ -42,9 +44,7 @@ public class UserVM {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;

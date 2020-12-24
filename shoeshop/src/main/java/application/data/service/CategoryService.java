@@ -2,6 +2,7 @@ package application.data.service;
 
 import application.data.model.Category;
 import application.data.repository.CategoryRepository;
+import application.model.viewmodel.common.CategoryVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -54,4 +55,12 @@ public class CategoryService {
     public Page<Category> getListCategoryByCategoryNameContaining(Pageable pageable, String categoryName){
         return categoryRepository.getListCategoryByCategoryNameContaining(pageable,categoryName);
     }
+//    public List<CategoryVM> getListCategories(){
+//        try{
+//            return categoryRepository.getListCategories();
+//        }catch (Exception e){
+//            return new ArrayList<>();
+//        }
+//    }
+
 }
