@@ -1,8 +1,8 @@
 public class Answers {
-    private String answer;
+    private String Answer;
     private String result;
     public Answers(String ans){
-        this.answer = new String(ans);
+        this.Answer = new String(ans);
         result = new String();
     }
     public String getResult(){
@@ -10,11 +10,11 @@ public class Answers {
     }
 
     public String getAnswer() {
-        return answer;
+        return Answer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setAnswer(String Answer) {
+        this.Answer = Answer;
     }
 
     public void setResult(String result) {

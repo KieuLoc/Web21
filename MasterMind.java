@@ -1,4 +1,3 @@
-
 import java.util.*;
 public class MasterMind {
     private static int defaultmaxAllowTime = 8;
@@ -10,7 +9,7 @@ public class MasterMind {
     private String hiddenNumber;
     private State GameState;
     private int maxAllowTime;
-    private List<Answers> atemptList;
+    private List<Answers> attemptList;
     private String correctAnswer = new String();
 
     public MasterMind(){
@@ -20,7 +19,7 @@ public class MasterMind {
         for (int i =1; i< QUIZZ_LENGTH; i++){
             correctAnswer = correctAnswer + allCorrect;
         }
-        atemptList = new ArrayList<Answers>();
+        attemptList = new ArrayList<Answers>();
     }
     public String getHiddenNumber(){
         return hiddenNumber;
@@ -39,19 +38,19 @@ public class MasterMind {
         return String.format("%04d", rand.nextInt(10000));
     }
     public String getResult(){
-        // Dien code
+        Answers ans = (Answers) attemptList.get(attemptList.size()-1);
         return ans.getResult();
     }
     public void evaluateResult(Answers Ans){
-        if(// Dien code){
+        if(isProgress()){
             Ans.setResult(matchResult(Ans.getAnswer()));
-            this.atemptList.add(Ans);
+            this.attemptList.add(Ans);
         }
         changeGameStatus(Ans);
     }
     private void changeGameStatus(Answers paraAttmpt){
-        if(atemptList.size() < maxAllowTime){
-            if ( Dien code){
+        if(attemptList.size() < maxAllowTime){
+            if (paraAttmpt.getResult().equals(correctAnswer)){
                 GameState = State.WIN;
             }else
                 GameState = State.LOST;
@@ -70,7 +69,7 @@ public class MasterMind {
                 rtnValue = rtnValue + this.allCorrect;
             }else
                 for(int j=0; j<hiddenNumber.length(); j++){
-                    if(){
+                    if(inChar[i]==hidChar[i]){
                         inChar[i] = '#';
                         rtnValue = rtnValue + this.numberCorrect;
                         break;
